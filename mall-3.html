@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="location-details.css" />
+  <title>GH Mall - Full Details</title>
+</head>
+<body>
+  <header>
+        <a>
+            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+        </a>
+    </header>
+  <main>
+  <div class="card">
+    <h1>GH Mall</h1>
+    <p><strong>Category:</strong> Mall</p>
+    <h2>Features</h2>
+    <ul>
+      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">elevator</span>Elevator access on all floors</li>
+      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
+    </ul>
+    <h2>Entrance Directions</h2>
+    <select id="direction-select" onchange="renderDirection()">
+      <option value="0">Primary Entrance</option>
+      <option value="1">Service Entrance</option>
+    </select>
+    <div id="direction-detail" >
+      <p id="direction-text"></p>
+      <img id="direction-image" src="" alt="Direction image" />
+    </div>
+    <hr />
+    <div id="formContainer">
+      <form
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdazxyfMwHxHo8YlwoVAlwnAnMEUpScTysjGTsG1ZcRtvxoaA/formResponse"
+        target="hidden_iframe"
+        id="bootstrapForm"
+        method="POST">
+        <fieldset>
+          <h2>Suggestion Form<br><small></small></h2>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "786733064" -->
+        <fieldset>
+          <legend for="786733064">Query Type</legend>
+          <div class="form-group">
+            <select id="786733064" name="entry.954817908" class="form-control">
+              <option value="Comment" selected>Comment</option>
+              <option value="New Location Suggestion">New Location Suggestion</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- Field type: "dropdown" id: "999410215" -->
+        <fieldset id="location-fieldset">
+          <legend for="999410215">Location</legend>
+          <div class="form-group">
+            <select id="999410215" name="entry.1369825634" class="form-control">
+              <option value=""></option>
+              <option value="Santolan Town Plaza">Santolan Town Plaza</option>
+              <option value="Puregold Agora">Puregold Agora</option>
+              <option value="GH Mall" selected>GH Mall</option>
+              <option value="City Hall">City Hall</option>
+              <option value="National Government Center">National Government Center</option>
+              <option value="Pinaglabanan Park">Pinaglabanan Park</option>
+              <option value="Mini Park">Mini Park</option>
+              <option value="Filoil EcoOil Centre">Filoil EcoOil Centre</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "1383028868" -->
+        <fieldset id="comment-fieldset">
+          <legend for="1383028868">Comment or Suggestion</legend>
+          <div class="form-group">
+            <textarea id="2006740745" name="entry.2006740745" class="form-control"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Field type: "short" id: "601711236" -->
+        <fieldset id="name-fieldset" style="display: none;">
+          <legend for="601711236">Name</legend>
+          <div class="form-group">
+            <input id="808266618" type="text" name="entry.808266618" class="form-control">
+          </div>
+        </fieldset>
+
+        <!-- Field type: "choices" id: "855366232" -->
+        <fieldset id="type-fieldset" style="display: none;">
+          <legend for="855366232">Type of Establishment</legend>
+          <div class="form-group">
+            <div class="radio">
+              <label>
+                <input type="radio" name="entry.649135730" value="Government">
+                Government
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="entry.649135730" value="Park">
+                Park
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="entry.649135730" value="Store">
+                Store
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="entry.649135730" value="Others">
+                Others
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Field type: "checkboxes" id: "12705910" -->
+        <fieldset id="features-fieldset" style="display: none;">
+          <legend for="12705910">Features</legend>
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Wheelchair-accessible entrances">
+                Wheelchair-accessible entrances
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Elevator access on all floors">
+                Elevator access on all floors
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Accessible/Universal Washrooms">
+                Accessible/Universal Washrooms
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Sign-language Trained Workers">
+                Sign-language Trained Workers
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Online Services">
+                Online Services
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Service Animal-Friendly">
+                Service Animal-Friendly
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="entry.513588152" value="Tactile Flooring">
+                Tactile Flooring
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Field type: "paragraph" id: "157596120" -->
+        <fieldset id="notes-fieldset" style="display: none;">
+          <legend for="157596120">Notes</legend>
+          <div class="form-group">
+            <textarea id="199907410" name="entry.199907410" class="form-control"></textarea>
+          </div>
+        </fieldset>
+
+        <input type="hidden" name="fvv" value="1">
+        <input type="hidden" name="fbzx" value="-3712829229282549581">
+        <input type="hidden" name="pageHistory" value="0">
+
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    </div>
+    <a href="index.html" class="btn btn-back">Back to Map</a>
+  </div>
+  </main>
+  <script>
+    const directions = [
+      { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
+      { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
+    ];
+
+    function renderDirection() {
+      const select = document.getElementById('direction-select');
+      const idx = parseInt(select.value, 10);
+      const direction = directions[idx] || directions[0];
+      document.getElementById('direction-text').textContent = direction.text;
+      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-image').alt = direction.label;
+    }
+
+    renderDirection();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('bootstrapForm');
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          // Create a temporary form to submit
+          var tempForm = document.createElement('form');
+          tempForm.action = form.action;
+          tempForm.method = form.method;
+          tempForm.target = form.target;
+          // Copy all form data
+          var formData = new FormData(form);
+          for (var [key, value] of formData.entries()) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            tempForm.appendChild(input);
+          }
+          // Append temp form to body and submit
+          document.body.appendChild(tempForm);
+          tempForm.submit();
+          // Remove temp form
+          document.body.removeChild(tempForm);
+          // Clear form fields
+          form.reset();
+        });
+        // Wait for iframe load
+        document.querySelector('iframe[name="hidden_iframe"]').addEventListener('load', function() {
+          alert("Form successfully submitted!");
+          window.location.href = "index.html";
+        });
+      }
+    });
+  </script>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</body>
+</html>
+
+

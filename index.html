@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Webapp</title>
+
+
+    <!--LINK TO OSM-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--LINK TO CSS and JS-->
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+    </script>
+
+    <!--LINK TO ICONS-->
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+        </a>
+        <a class="header-info-link" href="info.html">Info</a>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for a location..." autocomplete="off">
+            <button id="searchBtn">Search</button>
+            <div class="result-box">
+                <ul id="resultList"></ul>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        
+        <div class="hey">
+            <a href="info.html"><span class="material-icons" style="font-size: larger;   background-color: white;
+border-radius: 50%;">info</span></a>
+        </div>
+
+        <div id="map"></div>
+        <div id="zoomOverlay">Zoom in</div>
+        <div id="mapBlocker"></div>
+
+        <div id="formContainer" style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+            <button id="toggleFormBtn" type="button" class="btn btn-secondary">Comment or Suggest</button>
+            <div id="formWrapper" style="display: none;">
+                <button id="closeFormBtn" type="button" aria-label="Close form">×</button>
+                <form
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSdazxyfMwHxHo8YlwoVAlwnAnMEUpScTysjGTsG1ZcRtvxoaA/formResponse"
+                    target="hidden_iframe"
+                    id="bootstrapForm"
+                    method="POST">
+                    <fieldset>
+                        <h2>Suggestion Form<br><small></small></h2>
+                    </fieldset>
+
+
+                    <!-- Field type: "dropdown" id: "786733064" -->
+                    <fieldset>
+                        <legend for="786733064">Query Type</legend>
+                        <div class="form-group">
+                            <select id="786733064" name="entry.954817908" class="form-control">
+                                <option value="Comment">Comment</option>
+                                <option value="New Location Suggestion">New Location Suggestion</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "dropdown" id: "999410215" -->
+                    <fieldset id="location-fieldset">
+                        <legend for="999410215">Location</legend>
+                        <div class="form-group">
+                            <select id="999410215" name="entry.1369825634" class="form-control">
+                                <option value=""></option>
+                                <option value="Santolan Town Plaza">Santolan Town Plaza</option>
+                                <option value="Puregold Agora">Puregold Agora</option>
+                                <option value="GH Mall">GH Mall</option>
+                                <option value="City Hall">City Hall</option>
+                                <option value="National Government Center">National Government Center</option>
+                                <option value="Pinaglabanan Park">Pinaglabanan Park</option>
+                                <option value="Mini Park">Mini Park</option>
+                                <option value="Filoil EcoOil Centre">Filoil EcoOil Centre</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "paragraph" id: "1383028868" -->
+                    <fieldset id="comment-fieldset">
+                        <legend for="1383028868">Comment or Suggestion</legend>
+                        <div class="form-group">
+                            <textarea id="2006740745" name="entry.2006740745" class="form-control" ></textarea>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "short" id: "601711236" -->
+                    <fieldset id="name-fieldset">
+                        <legend for="601711236">Name</legend>
+                        <div class="form-group">
+                            <input id="808266618" type="text" name="entry.808266618" class="form-control" >
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "choices" id: "855366232" -->
+                    <fieldset id="type-fieldset">
+                        <legend for="855366232">Type of Establishment</legend>
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="entry.649135730" value="Government" >
+                                    Government
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="entry.649135730" value="Park" >
+                                    Park
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="entry.649135730" value="Store" >
+                                    Store
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="entry.649135730" value="Others" >
+                                    Others
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "checkboxes" id: "12705910" -->
+                    <fieldset id="features-fieldset">
+                        <legend for="12705910">Features</legend>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Wheelchair-accessible entrances" >
+                                    Wheelchair-accessible entrances
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Elevator access on all floors" >
+                                    Elevator access on all floors
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Accessible/Universal Washrooms" >
+                                    Accessible/Universal Washrooms
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Sign-language Trained Workers" >
+                                    Sign-language Trained Workers
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Online Services" >
+                                    Online Services
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Service Animal-Friendly" >
+                                    Service Animal-Friendly
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="entry.513588152" value="Tactile Flooring" >
+                                    Tactile Flooring
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Field type: "paragraph" id: "157596120" -->
+                    <fieldset id="notes-fieldset">
+                        <legend for="157596120">Notes</legend>
+                        <div class="form-group">
+                            <textarea id="199907410" name="entry.199907410" class="form-control" ></textarea>
+                        </div>
+                    </fieldset>
+
+                    <input type="hidden" name="fvv" value="1">
+                    <input type="hidden" name="fbzx" value="-3712829229282549581">
+                    <!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+                    <input type="hidden" name="pageHistory" value="0">
+
+                    <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+        </div>
+        <button id="toggleFilterBoxBtn" type="button" class="btn btn-secondary">Hide Filters</button>
+
+        <div id="mapPanel">
+            <hr style="margin: 8px 0;">
+            <strong>Map Filters</strong>
+            <label for="" style="font-style: italic;"><input type="checkbox" id="labelToggle" checked><span class="mapCheckbox"></span> Show Labels</label>
+            <label for=""><input type="checkbox" id="filterMalls" checked onchange="toggleLayer(mallLayer, this)"><span class="mapCheckbox"></span> Malls</label>
+            <label for=""><input type="checkbox" id="filterGovernment" checked onchange="toggleLayer(governmentLayer, this)"><span class="mapCheckbox"></span> Government Offices</label>
+            <label for=""><input type="checkbox" id="filterParks" checked onchange="toggleLayer(parkLayer, this)"><span class="mapCheckbox"></span> Parks</label>
+            
+            <hr style="margin: 8px 0;">
+            <div id="featureFilters">
+                <strong>Feature Filters</strong>
+                <label><input type="checkbox" class="feature-filter" value="Online Services"> Online Services</label>
+                <label><input type="checkbox" class="feature-filter" value="Elevators"> Elevators</label>
+                <label><input type="checkbox" class="feature-filter" value="Escalators"> Escalators</label>
+                <label><input type="checkbox" class="feature-filter" value="Accessibility Parking Spaces"> Accessibility Parking Spaces</label>
+                <label><input type="checkbox" class="feature-filter" value="Tactile Flooring"> Tactile Flooring</label>
+                <label><input type="checkbox" class="feature-filter" value="Wheelchair-accessible entrances"> Wheelchair-accessible Entrances</label>
+                <label><input type="checkbox" class="feature-filter" value="Accessible/Universal Washrooms"> Accessible/Universal Washrooms</label>
+                <label><input type="checkbox" class="feature-filter" value="Sign-language Trained Workers"> Sign-language Trained Workers</label>
+                <label><input type="checkbox" class="feature-filter" value="Service Animal-Friendly Establishments"> Service Animal-Friendly Establishments</label>
+            </div>
+        </div>
+    <script src="script.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js"
+        defer>
+    </script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+        integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous">
+    </script>
+    <script>
+        // Form submission is handled in script.js
+    </script>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+</body>
+
+</html>

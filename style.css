@@ -1,0 +1,542 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, #6b1d1d, #9c2e2e);
+  z-index: 2500;
+}
+
+header a{
+  margin-left: 8px;
+
+  margin: 10px;
+  line-height: 7.5vh;
+}
+
+header img{
+  display: block;
+  max-height: 40px;
+  width: auto;
+  margin: auto 0;
+}
+
+.header-info-link {
+  display: none;
+  margin-left: 12px;
+  color: #f9c263;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.35);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.header-info-link:hover,
+.header-info-link:focus {
+  background: rgba(255,255,255,0.28);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (min-width: 780px) {
+  .header-info-link {
+    display: inline-block;
+  }
+}
+
+#map {
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+  transition: filter 0.3s ease;
+}
+
+#map.blurred {
+  filter: blur(5px);
+}
+
+#mapBlocker {
+  position: absolute;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+  background: rgba(0,0,0,0);
+  pointer-events: auto;
+}
+
+#mapPanel{
+  position: fixed;
+  top: 130px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.8s ease;
+}
+
+#mapPanel.visible {
+  max-height: 600px;
+  opacity: 1;
+}
+#zoomOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 1500;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+  display: flex;
+}
+
+#zoomOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mapPanel label {
+  margin: 0;
+  font-size: 14px;
+  line-height: 24.5px;
+}
+
+.hey{
+  position: absolute;
+  top: calc(10vh + 20px);
+  left: 20px;
+  z-index: 9999;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;}
+
+.hey a{
+  position: relative;
+  font-size: larger;
+  color: blue;
+  text-decoration: none;
+}
+
+
+#formContainer {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: 10px;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+
+#formContainer.form-open {
+  left: auto;
+  right: 20px;
+}
+
+#toggleFormBtn {
+  position: fixed;
+  padding: 8px 12px;
+  bottom: 20px;
+  left: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: linear-gradient(145deg, #1f9e2e, #28d47d);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: white;
+}
+
+#toggleFormBtn:hover {
+  filter: brightness(1.05);
+}
+
+#toggleFilterBoxBtn {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 1200;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: linear-gradient(145deg, #6b1d1d, #9c2e2e);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: #f9c263;
+  transition: filter 0.3s ease;
+}
+
+#toggleFilterBoxBtn:hover {
+  filter: brightness(1.05);
+}
+
+#bootstrapForm {
+  margin: 8px;
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: max(50vh, 400px);
+}
+
+#bootstrapForm legend{
+  color: #6b1d1d;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+#bootstrapForm [type="submit"]{
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#bootstrapForm [type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40,167,69,0.3);
+}
+
+#formWrapper {
+  position: relative;
+  z-index: 1000;
+  display: none; /* default hidden */
+  max-height: 0;
+  overflow: hidden;
+  width: 90vw;
+  max-width: 500px;
+  transition: max-height 0.8s ease;
+}
+
+#formWrapper.visible {
+  max-height: 80vh;
+}
+
+#closeFormBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #e3342f;
+  color: white;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+#closeFormBtn:hover {
+  background: #c92a23;
+}
+
+#bootstrapForm fieldset{
+  border: 1px solid #6b1d1d;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+#bootstrapForm input, #bootstrapForm select, #bootstrapForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+#bootstrapForm input:focus, #bootstrapForm select:focus, #bootstrapForm textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+#mapPanel label{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 5px;
+}
+
+#mapPanel input{
+  height: 20px;
+  width: 20px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Custom checkbox styling (uses CSS variables for per-toggle color) */
+#mapPanel input[type="checkbox"]{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #cfcfcf;
+  background: #ffffff;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+#mapPanel input[type="checkbox"]::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  /* translate up slightly to compensate for rotation visual center */
+  transform: translate(-50%, -55%) rotate(45deg) scale(0.7);
+  opacity: 0;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  box-sizing: content-box;
+}
+
+
+/* single shared toggle color for all checkboxes */
+#mapPanel input[type="checkbox"]{ --toggle-color: #4169E1; }
+
+#mapPanel input[type="checkbox"]:checked{
+  background: var(--toggle-color);
+  border-color: var(--toggle-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12), 0 0 8px rgba(0,0,0,0.04) inset;
+}
+
+#mapPanel input[type="checkbox"]:checked::after{
+  transform: translate(-50%, -75%) rotate(45deg) scale(1);
+  opacity: 1;
+}
+
+#mapPanel input[type="checkbox"]:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100,100,100,0.08);
+}
+
+.leaflet-marker-icon{
+  transition: all 0.45s ease;
+  display: inline-block;
+  padding: 5px; /* create visible white ring around the SVG image */
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 5px 5px rgba(255, 255, 255, 1),
+              0 0 0 6px rgba(255, 255, 255, 1),
+              0 0px 0px 7.5px rgb(0,0,0,0.35),
+              0 10px 5px rgba(0, 0, 0, 0.5) !important;
+  box-sizing: content-box;
+}
+
+.marker-hidden{
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7);
+}
+
+.search-box{
+  min-width: 30vw;
+  max-width: 500vw;
+  z-index: 2000;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.search-box input[type='text']{
+  flex: 1;
+  min-width: 100px;
+  padding: 6px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  outline: none;
+  background-color: white;
+}
+
+.search-box button{
+  padding: 6px 10px;
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-box .result-box{
+  position: absolute;
+  top: 7.5vh;
+  left: auto;
+  right: 0;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 2100;
+}
+
+.search-box .result-box ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-box .result-box li{
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.search-box .result-box li:hover{
+  background: #f0f0f0;
+}
+
+.map-label {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #bbb;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: inherit;
+  color: #000;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.map-label.lf-tooltip-left {
+  transform: translateX(-100%);
+}
+
+/* Override Leaflet popup font-size to inherit for accessibility */
+.leaflet-popup-content {
+  font-size: inherit !important;
+}
+
+/* Override Leaflet tooltip font-size to inherit for accessibility */
+.leaflet-tooltip {
+  font-size: inherit !important;
+}
+
+.leaflet-tooltip-pane {
+  pointer-events: none;
+}
+
+.leaflet-tooltip-pane .leaflet-tooltip {
+  pointer-events: auto;
+}
+
+/* Allow tooltips to overflow map boundaries */
+.leaflet-pane {
+  overflow: visible !important;
+}
+
+/* Clicked state: add a colored ring matching the icon color */
+.leaflet-marker-icon.mallIcon.clicked{
+  box-shadow: 0 12px 40px rgba(128,0,0,0.75),
+              0 0 0 10px rgba(255,255,255,1),
+              0 0 10px 13px rgba(128,0,0,0.8) !important;
+}
+
+.leaflet-marker-icon.governmentIcon.clicked{
+  box-shadow: 0 12px 40px rgba(65,105,225,0.75),
+              0 0 0 10px rgba(255,255,255,1),
+              0 0 10px 13px rgba(65,105,225,0.95) !important;
+}
+
+.leaflet-marker-icon.parkIcon.clicked{
+  box-shadow: 0 12px 40px rgba(34,139,34,0.75),
+              0 0 0 10px rgba(255,255,255,1),
+              0 0 10px 13px rgba(34,139,34,0.95) !important;
+}
+
+/* Hide form fieldsets initially */
+#location-fieldset,
+#comment-fieldset,
+/* Hide form fieldsets initially */
+#location-fieldset,
+#comment-fieldset,
+#name-fieldset,
+#type-fieldset,
+#features-fieldset,
+#notes-fieldset {
+  display: none;
+}
+
+@media (min-width: 780px) {
+
+  header{
+    height: 80px;
+  }
+
+  #toggleFormBtn {
+  }
+}
+
+/* Location name styling in map popups */
+.location-name {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+}

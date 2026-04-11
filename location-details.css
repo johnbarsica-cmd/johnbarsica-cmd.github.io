@@ -1,0 +1,179 @@
+body{
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body{
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-sizing: border-box;
+  background-color: #6b1d1d;
+  z-index: 2500;
+}
+
+header a{
+  margin-left: 8px;
+
+  margin: 10px;
+  line-height: 7.5vh;
+}
+
+header img{
+  display: block;
+  max-height: 40px;
+  width: auto;
+  margin: auto 0;
+}
+
+.card { 
+  max-width: 800px; 
+  margin: auto; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; padding: 16px; 
+  background: #fff; 
+}
+
+h1{
+  color: #6b1d1d;
+}
+
+h2{
+  color: #6b1d1d;
+  font-style: italic
+}
+
+.btn { 
+  display: inline-block; 
+  margin: 8px 4px 0 0; 
+  padding: 10px 14px; 
+  border: none; 
+  border-radius: 4px; 
+  color: #fff; 
+  cursor: pointer; 
+  text-decoration: none; 
+}
+
+.btn-back { 
+  background: #007bff; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#sub { 
+  background: #28a745;
+  width: 100%;
+}
+
+.feature-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+#formContainer {
+  margin: 20px 0;
+  background-color: whitesmoke;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.checkbox, .radio {
+  margin: 5px 0;
+}
+
+.checkbox label, .radio label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input, .radio input {
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background: #007bff;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.feature-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+select { 
+  width: 100%; 
+  padding: 8px; 
+  border-radius: 4px; 
+  border: 
+  1px solid #ccc; 
+}
+
+img { 
+  max-width: 100%; 
+  height: auto; 
+  border-radius: 6px; 
+  margin-top: 8px;
+}
+
+#direction-select{
+  background-color: #ffd9d9;
+}
+
+textarea{
+  background-color: #ffd9d9;
+}
+
+#direction-detail { 
+  margin-top: 12px; 
+  padding: 10px; 
+  background: #f8f9fa; 
+  border: 1px solid #ddd; 
+  border-radius: 6px; 
+}
+
+hr { 
+  margin: 16px 0; 
+}
+
+.location-image{
+  box-sizing: border-box;
+  border: 1px solid #ffd1d1;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+  border-radius: 6px;
+  margin-top: 12px;
+}
