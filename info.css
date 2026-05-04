@@ -78,6 +78,11 @@ header img{
   .header-links {
     display: flex;
   }
+  
+  /* Hide the Info tab on the info page since you're already here */
+  header > .header-info-link {
+    display: none;
+  }
 }
 
 main {

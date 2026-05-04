@@ -80,6 +80,11 @@ header > .header-info-link {
   .header-links {
     display: flex;
   }
+  
+  /* Hide the Info tab on large screens */
+  header > .header-info-link {
+    display: none;
+  }
 }
 
 main {

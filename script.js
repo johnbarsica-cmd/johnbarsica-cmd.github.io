@@ -1,5 +1,10 @@
 // Handle header links for info.html dropdowns
 document.addEventListener('DOMContentLoaded', function() {
+    // Only run this functionality on info.html
+    if (!window.location.pathname.includes('info.html')) {
+        return;
+    }
+    
     // Function to open a dropdown by ID
     const openDropdown = (id) => {
         const details = document.getElementById(id);
@@ -37,6 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Also handle hash changes (e.g., when navigating via back button or direct URL entry)
 window.addEventListener('hashchange', function() {
+    // Only run this functionality on info.html
+    if (!window.location.pathname.includes('info.html')) {
+        return;
+    }
+    
     if (window.location.hash) {
         const hashId = window.location.hash.substring(1);
         const details = document.getElementById(hashId);
