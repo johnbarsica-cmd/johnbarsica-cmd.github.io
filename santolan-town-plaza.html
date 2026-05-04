@@ -1,38 +1,53 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logos/logo3.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="location-details.css" />
-  <title>National Government Center - Full Details</title>
+  <script src="script.js"></script>
+  <link rel="icon" href="logos/logo3.png">
+  <title>Santolan Town Plaza - Full Details</title>
 </head>
 <body>
   <header>
-        <a>
-            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-        </a>
-    </header>
+    <a href="index.html">
+        <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+    </a>
+    <a class="header-info-link" href="info.html">Info</a>
+    <div class="header-links">
+        <a class="header-info-link" href="info.html#isa">Accessibility</a>
+        <a class="header-info-link" href="info.html#laws">Laws</a>
+        <a class="header-info-link" href="info.html#agencies">Agencies</a>
+        <a class="header-info-link" href="info.html#w3c">W3C</a>
+        <a class="header-info-link" href="info.html#future">Future</a>
+    </div>
+</header>
   <main>
   <div class="card">
-    <h1>National Government Center</h1>
-    <p><strong>Category:</strong> Government</p>
+    <img src="places/santolan.jpg" alt="Santolan Town Plaza" class="location-image"/>
+    <p class="image-reference"><strong>Source:</strong> <a href="https://rockwellworkspaces.com/properties/santolan-town-plaza/" target="_blank">Rockwell Workspaces</a></p>
+    <h1>Santolan Town Plaza</h1>
+    <hr>
+    <p class="location-meta"><strong>Address:</strong> 76 Santolan Road, Barangay Little Baguio, San Juan City, Metro Manila</p>
+    <p class="location-meta"><strong>Category:</strong> Mall</p>
+    <hr>
     <h2>Features</h2>
     <ul>
-      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
-      <li><span class="material-icons feature-icon">language</span>Online Services</li>
-      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">language</span><a href="https://www.facebook.com/SantolanTownPlaza/" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">Online Services</a></li>
+      <li><span class="material-icons feature-icon">elevator</span>Elevator access on all floors</li>
+      <li><span class="material-icons feature-icon">escalator</span>Escalators</li>
       <li><span class="material-icons feature-icon">local_parking</span>Accessibility Parking Spaces</li>
+      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
+      <li><span class="material-icons feature-icon">pets</span>Service Animal-Friendly Establishment</li>
+      <li><span class="material-icons feature-icon">flash_off</span>No Flashing Lights</li>
+      <li><span class="material-icons feature-icon">chair</span>Abundant Public Seating</li>
     </ul>
+    <hr>
     <h2>Entrance Directions</h2>
-    <select id="direction-select" onchange="renderDirection()">
-      <option value="0">Front Entrance</option>
-      <option value="1">Parking Area Access</option>
-    </select>
-    <div id="direction-detail" >
-      <p id="direction-text"></p>
-      <img id="direction-image" src="" alt="Direction image" />
-    </div>
+    <p style="text-align: center;">Coming Soon</p>
     <hr />
     <div id="formContainer">
       <form
@@ -45,7 +60,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "786733064" -->
-        <fieldset>
+        <fieldset style="display: none;">
           <legend for="786733064">Query Type</legend>
           <div class="form-group">
             <select id="786733064" name="entry.954817908" class="form-control">
@@ -56,16 +71,16 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "999410215" -->
-        <fieldset id="location-fieldset">
+        <fieldset id="location-fieldset" style="display: none">
           <legend for="999410215">Location</legend>
           <div class="form-group">
             <select id="999410215" name="entry.1369825634" class="form-control">
               <option value=""></option>
-              <option value="Santolan Town Plaza">Santolan Town Plaza</option>
+              <option value="Santolan Town Plaza" selected>Santolan Town Plaza</option>
               <option value="Puregold Agora">Puregold Agora</option>
               <option value="GH Mall">GH Mall</option>
               <option value="City Hall">City Hall</option>
-              <option value="National Government Center" selected>National Government Center</option>
+              <option value="National Government Center">National Government Center</option>
               <option value="Pinaglabanan Park">Pinaglabanan Park</option>
               <option value="Mini Park">Mini Park</option>
               <option value="Filoil EcoOil Centre">Filoil EcoOil Centre</option>
@@ -82,7 +97,7 @@
         </fieldset>
 
         <!-- Field type: "short" id: "601711236" -->
-        <fieldset id="name-fieldset">
+        <fieldset id="name-fieldset" style="display: none;">
           <legend for="601711236">Name</legend>
           <div class="form-group">
             <input id="808266618" type="text" name="entry.808266618" class="form-control">
@@ -90,7 +105,7 @@
         </fieldset>
 
         <!-- Field type: "choices" id: "855366232" -->
-        <fieldset id="type-fieldset">
+        <fieldset id="type-fieldset" style="display: none;">
           <legend for="855366232">Type of Establishment</legend>
           <div class="form-group">
             <div class="radio">
@@ -121,7 +136,7 @@
         </fieldset>
 
         <!-- Field type: "checkboxes" id: "12705910" -->
-        <fieldset id="features-fieldset">
+        <fieldset id="features-fieldset" style="display: none;">
           <legend for="12705910">Features</legend>
           <div class="form-group">
             <div class="checkbox">
@@ -170,7 +185,7 @@
         </fieldset>
 
         <!-- Field type: "paragraph" id: "157596120" -->
-        <fieldset id="notes-fieldset">
+        <fieldset id="notes-fieldset" style="display: none;">
           <legend for="157596120">Notes</legend>
           <div class="form-group">
             <textarea id="199907410" name="entry.199907410" class="form-control"></textarea>
@@ -181,24 +196,31 @@
         <input type="hidden" name="fbzx" value="-3712829229282549581">
         <input type="hidden" name="pageHistory" value="0">
 
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input id="sub" class="btn btn-primary" type="submit" value="Submit">
       </form>
     </div>
-    <a href="index.html" class="btn btn-back">Back to Map</a>
+    <hr>
+    <h2 style="color: gray;">Accessibility Rating (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    <hr>
+    <h2 style="color: gray;">Comments (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    
   </div>
+  <a href="index.html" class="btn-back">Back to Map</a>
   </main>
   <script>
     const directions = [
-      { label: 'Front Entrance', text: 'Main front entrance of National Government Center with ramps and elevators.', image: 'https://via.placeholder.com/260x150?text=NGC+Front+Entrance' },
-      { label: 'Parking Area Access', text: 'Direct access from designated parking spaces at National Government Center.', image: 'https://via.placeholder.com/260x150?text=NGC+Parking+Access' }
+      { label: 'Main Entrance', text: 'Enter Santolan Town Plaza via the main street entrance; follow sidewalk signs to the lobby.', image: 'https://via.placeholder.com/260x150?text=Santolan+Main+Entrance' },
+      { label: 'Parking Lot Route', text: 'From the parking lot, walk through the pedestrian gate and take the ramp to the Santolan Town Plaza door.', image: 'https://via.placeholder.com/260x150?text=Santolan+Parking+Entrance' }
     ];
 
     function renderDirection() {
       const select = document.getElementById('direction-select');
       const idx = parseInt(select.value, 10);
       const direction = directions[idx] || directions[0];
-      document.getElementById('direction-text').textContent = direction.text;
-      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-text').textContent = 'Coming soon.';
+      document.getElementById('direction-image').src = 'https://via.placeholder.com/260x150?text=Coming+Soon';
       document.getElementById('direction-image').alt = direction.label;
     }
 
@@ -243,5 +265,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
+
+
+
 
 

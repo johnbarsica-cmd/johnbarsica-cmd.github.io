@@ -1,39 +1,48 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logos/logo3.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="location-details.css" />
-  <title>City Hall - Full Details</title>
+  <script src="script.js"></script>
+  <link rel="icon" href="logos/logo3.png">
+  <title>Puregold Agora - Full Details</title>
 </head>
 <body>
   <header>
-        <a>
-            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-        </a>
-    </header>
+    <a href="index.html">
+        <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+    </a>
+    <a class="header-info-link" href="info.html">Info</a>
+    <div class="header-links">
+        <a class="header-info-link" href="info.html#isa">Accessibility</a>
+        <a class="header-info-link" href="info.html#laws">Laws</a>
+        <a class="header-info-link" href="info.html#agencies">Agencies</a>
+        <a class="header-info-link" href="info.html#w3c">W3C</a>
+        <a class="header-info-link" href="info.html#future">Future</a>
+    </div>
+</header>
   <main>
-    
   <div class="card">
-    <h1>City Hall</h1>
-    <p><strong>Category:</strong> Government</p>
+    <img src="places/puregoldagora.jpg" alt="Puregold Agora" class="location-image"/>
+    <p class="image-reference"><strong>Source:</strong> <a href="https://commons.wikimedia.org/wiki/File:02401jfN._Domingo_Street_San_Juan_Plaza_Mayor_Puregold_Agora_Progeso_Rivera_San_Juan_Cityfvf_14.jpg" target="_blank">Wikimedia Commons</a></p>
+    <h1>Puregold Agora</h1>
+    <hr>
+    <p class="location-meta"><strong>Address:</strong> 1 N. Domingo St., cor F. Blumentritt, San Juan City, Metro Manila</p>
+    <p class="location-meta"><strong>Category:</strong> Mall</p>
+    <hr>
     <h2>Features</h2>
     <ul>
-      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
-      <li><span class="material-icons feature-icon">sign_language</span>Sign-language Trained Workers</li>
-      <li><span class="material-icons feature-icon">language</span>Online Services</li>
-      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">online_prediction</span><a href="https://www.foodpanda.ph/shop/ybql/puregold-agora" style="color: #007bff; text-decoration: none; font-weight: 500; transition: color 0.3s ease;" target="_blank">Online Services</a></li>
+      <li><span class="material-icons feature-icon">escalator</span>Escalators</li>
+      <li><span class="material-icons feature-icon">local_parking</span>Accessibility Parking Spaces</li>
+      <li><span class="material-icons feature-icon">flash_off</span>No Flashing Lights</li>
+      <li><span class="material-icons feature-icon">chair</span>Abundant Public Seating</li>
     </ul>
-    <h2>Entrance Directions</h2>
-    <select id="direction-select" onchange="renderDirection()">
-      <option value="0">Main Lobby Entrance</option>
-      <option value="1">Side Entrance</option>
-    </select>
-    <div id="direction-detail" >
-      <p id="direction-text"></p>
-      <img id="direction-image" src="" alt="Direction image" />
-    </div>
+    <hr>
+    <h2>Entrance Directions</h2><p style="text-align: center;">Coming Soon</p>
     <hr />
     <div id="formContainer">
       <form
@@ -46,7 +55,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "786733064" -->
-        <fieldset>
+        <fieldset style="display: none;">
           <legend for="786733064">Query Type</legend>
           <div class="form-group">
             <select id="786733064" name="entry.954817908" class="form-control">
@@ -57,15 +66,15 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "999410215" -->
-        <fieldset id="location-fieldset">
+        <fieldset id="location-fieldset" style="display: none">
           <legend for="999410215">Location</legend>
           <div class="form-group">
             <select id="999410215" name="entry.1369825634" class="form-control">
               <option value=""></option>
               <option value="Santolan Town Plaza">Santolan Town Plaza</option>
-              <option value="Puregold Agora">Puregold Agora</option>
+              <option value="Puregold Agora" selected>Puregold Agora</option>
               <option value="GH Mall">GH Mall</option>
-              <option value="City Hall" selected>City Hall</option>
+              <option value="City Hall">City Hall</option>
               <option value="National Government Center">National Government Center</option>
               <option value="Pinaglabanan Park">Pinaglabanan Park</option>
               <option value="Mini Park">Mini Park</option>
@@ -182,25 +191,31 @@
         <input type="hidden" name="fbzx" value="-3712829229282549581">
         <input type="hidden" name="pageHistory" value="0">
 
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input id="sub" class="btn btn-primary" type="submit" value="Submit">
       </form>
     </div>
-    <a href="index.html" class="btn btn-back">Back to Map</a>
+    <hr>
+    <h2 style="color: gray;">Accessibility Rating (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    <hr>
+    <h2 style="color: gray;">Comments (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    
   </div>
-  
+  <a href="index.html" class="btn-back">Back to Map</a>
   </main>
   <script>
     const directions = [
-      { label: 'Main Lobby Entrance', text: 'Enter City Hall through the main lobby; security check required.', image: 'https://via.placeholder.com/260x150?text=City+Hall+Main+Lobby' },
-      { label: 'Side Entrance', text: 'Side entrance of City Hall for service counters; accessible path available.', image: 'https://via.placeholder.com/260x150?text=City+Hall+Side+Entrance' }
+      { label: 'Front Entrance', text: 'Use the front entrance of Puregold Agora near the Agora sign; accessible ramp available.', image: 'https://via.placeholder.com/260x150?text=Puregold+Front+Entrance' },
+      { label: 'Back Entrance', text: 'Enter Puregold Agora from the back alley; follow the marked path to the store.', image: 'https://via.placeholder.com/260x150?text=Puregold+Back+Entrance' }
     ];
 
     function renderDirection() {
       const select = document.getElementById('direction-select');
       const idx = parseInt(select.value, 10);
       const direction = directions[idx] || directions[0];
-      document.getElementById('direction-text').textContent = direction.text;
-      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-text').textContent = 'Coming soon.';
+      document.getElementById('direction-image').src = 'https://via.placeholder.com/260x150?text=Coming+Soon';
       document.getElementById('direction-image').alt = direction.label;
     }
 
@@ -245,5 +260,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
+
+
+
 
 

@@ -1,36 +1,48 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="location-details.css" />
-  <title>Mini Park - Full Details</title>
+  <script src="script.js"></script>
+  <link rel="icon" href="logos/logo3.png">
+  <title>Pinaglabanan Park - Full Details</title>
 </head>
 <body>
   <header>
-        <a>
-            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-        </a>
-    </header>
+    <a href="index.html">
+        <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+    </a>
+    <a class="header-info-link" href="info.html">Info</a>
+    <div class="header-links">
+        <a class="header-info-link" href="info.html#isa">Accessibility</a>
+        <a class="header-info-link" href="info.html#laws">Laws</a>
+        <a class="header-info-link" href="info.html#agencies">Agencies</a>
+        <a class="header-info-link" href="info.html#w3c">W3C</a>
+        <a class="header-info-link" href="info.html#future">Future</a>
+    </div>
+</header>
     <main>
   <div class="card">
-    <h1>Mini Park</h1>
-    <p><strong>Category:</strong> Park</p>
+    <img src="places/pinaglabanan.jpg" alt="Pinaglabanan Park" class="location-image"/>
+    <p class="image-reference"><strong>Source:</strong> <a href="https://rollingshuttersaga.blogspot.com/2014/07/lakbayin-4-pinaglabanan-shrine-san-juan.html" target="_blank">Rolling Shutter Saga</a></p>
+    <h1>Pinaglabanan Park</h1>
+    <hr>
+    <p class="location-meta"><strong>Address:</strong> Pinaglabanan St., Brgy. Corazon de Jesus,San Juan City, Metro Manila</p>
+    <p class="location-meta"><strong>Category:</strong> Park</p>
+    <hr>
     <h2>Features</h2>
     <ul>
-      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
-      <li><span class="material-icons feature-icon">pets</span>Service Animal-Friendly Establishments</li>
+      <li><span class="material-icons feature-icon">local_parking</span>Acessibility Parking Spaces</li>
+      <li><span class="material-icons feature-icon">blind</span>Tactile Flooring</li>
+      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances <span class="material-icons warning-icon" onclick="alert('Motorcycles park and cars often block the wheelchair ramps.')">warning</span></li>
+      <li><span class="material-icons feature-icon">pets</span>Service Animal-Friendly Establishments <span class="material-icons warning-icon" onclick="alert('Animals need to be wearing diapers in the park museums. Owners should be prepared to clean up after their pets.')">warning</span></li>
+      <li><span class="material-icons feature-icon">flash_off</span>No Flashing Lights</li>
+      <li><span class="material-icons feature-icon">chair</span>Abundant Public Seating</li>
     </ul>
-    <h2>Entrance Directions</h2>
-    <select id="direction-select" onchange="renderDirection()">
-      <option value="0">Main Entrance</option>
-      <option value="1">Side Walkway</option>
-    </select>
-    <div id="direction-detail" >
-      <p id="direction-text"></p>
-      <img id="direction-image" src="" alt="Direction image" />
-    </div>
+    <hr>
+    <h2>Entrance Directions</h2><p style="text-align: center;">Coming Soon</p>
     <hr />
     <div id="formContainer">
       <form
@@ -43,7 +55,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "786733064" -->
-        <fieldset>
+        <fieldset style="display: none;">
           <legend for="786733064">Query Type</legend>
           <div class="form-group">
             <select id="786733064" name="entry.954817908" class="form-control">
@@ -54,7 +66,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "999410215" -->
-        <fieldset id="location-fieldset">
+        <fieldset id="location-fieldset" style="display: none">
           <legend for="999410215">Location</legend>
           <div class="form-group">
             <select id="999410215" name="entry.1369825634" class="form-control">
@@ -64,8 +76,8 @@
               <option value="GH Mall">GH Mall</option>
               <option value="City Hall">City Hall</option>
               <option value="National Government Center">National Government Center</option>
-              <option value="Pinaglabanan Park">Pinaglabanan Park</option>
-              <option value="Mini Park" selected>Mini Park</option>
+              <option value="Pinaglabanan Park" selected>Pinaglabanan Park</option>
+              <option value="Mini Park">Mini Park</option>
               <option value="Filoil EcoOil Centre">Filoil EcoOil Centre</option>
             </select>
           </div>
@@ -179,24 +191,31 @@
         <input type="hidden" name="fbzx" value="-3712829229282549581">
         <input type="hidden" name="pageHistory" value="0">
 
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input id="sub" class="btn btn-primary" type="submit" value="Submit">
       </form>
     </div>
-    <a href="index.html" class="btn btn-back">Back to Map</a>
+    <hr>
+    <h2 style="color: gray;">Accessibility Rating (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    <hr>
+    <h2 style="color: gray;">Comments (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    
   </div>
+  <a href="index.html" class="btn-back">Back to Map</a>
   </main>
   <script>
     const directions = [
-      { label: 'Main Entrance', text: 'Access Mini Park from Lopez Street entrance; a short ramp leads directly into the green zone.', image: 'https://via.placeholder.com/260x150?text=Mini+Park+Main+Entrance' },
-      { label: 'Side Walkway', text: 'Enter Mini Park via the dedicated walkway beside the community center; this is the least crowded route.', image: 'https://via.placeholder.com/260x150?text=Mini+Park+Side+Walkway' }
+      { label: 'North Gate', text: 'Enter Pinaglabanan Park through the North Gate at the intersection of Santolan and Concordia; follow the paved path to the central plaza.', image: 'https://via.placeholder.com/260x150?text=Pinaglabanan+North+Gate' },
+      { label: 'South Gate', text: 'Use the South Gate of Pinaglabanan Park on Felicidad; this path is more shaded and closer to the fountain area.', image: 'https://via.placeholder.com/260x150?text=Pinaglabanan+South+Gate' }
     ];
 
     function renderDirection() {
       const select = document.getElementById('direction-select');
       const idx = parseInt(select.value, 10);
       const direction = directions[idx] || directions[0];
-      document.getElementById('direction-text').textContent = direction.text;
-      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-text').textContent = 'Coming soon.';
+      document.getElementById('direction-image').src = 'https://via.placeholder.com/260x150?text=Coming+Soon';
       document.getElementById('direction-image').alt = direction.label;
     }
 
@@ -241,5 +260,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
+
+
+
 
 

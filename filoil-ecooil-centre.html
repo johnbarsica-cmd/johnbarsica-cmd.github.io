@@ -1,37 +1,45 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="location-details.css" />
+  <script src="script.js"></script>
+  <link rel="icon" href="logos/logo3.png">
   <title>Filoil EcoOil Centre - Full Details</title>
 </head>
-
-  <header>
-        <a>
-            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-        </a>
-    </header>
 <body>
+  <header>
+    <a href="index.html">
+        <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+    </a>
+    <a class="header-info-link" href="info.html">Info</a>
+    <div class="header-links">
+        <a class="header-info-link" href="info.html#isa">Accessibility</a>
+        <a class="header-info-link" href="info.html#laws">Laws</a>
+        <a class="header-info-link" href="info.html#agencies">Agencies</a>
+        <a class="header-info-link" href="info.html#w3c">W3C</a>
+        <a class="header-info-link" href="info.html#future">Future</a>
+    </div>
+</header>
+  <main>
   <div class="card">
+    <img src="places/filoil.jpg" alt="Filoil EcoOil Centre" class="location-image"/>
+    <p class="image-reference"><strong>Source:</strong> <a href="https://www.facebook.com/FilOilSanJuan/photos/" target="_blank">FilOil San Juan Facebook</a></p>
     <h1>Filoil EcoOil Centre</h1>
-    <p><strong>Category:</strong> Park</p>
+    <hr>
+    <p class="location-meta"><strong>Address:</strong> Col. Bonny Serrano Avenue, Brgy. Corazon de Jesus, San Juan City, Metro Manila</p>
+    <p class="location-meta"><strong>Category:</strong> Park</p>
+    <hr>
     <h2>Features</h2>
     <ul>
+      <li><span class="material-icons feature-icon">local_parking</span>Accessibility Parking Spaces</li>
       <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
-      <li><span class="material-icons feature-icon">blind</span>Tactile Flooring</li>
-      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
+      <li><span class="material-icons feature-icon">wc</span>Accessible/Universal Washrooms</li>
     </ul>
-    <h2>Entrance Directions</h2>
-    <select id="direction-select" onchange="renderDirection()">
-      <option value="0">Main Gate</option>
-      <option value="1">Back Entry</option>
-    </select>
-    <div id="direction-detail" >
-      <p id="direction-text"></p>
-      <img id="direction-image" src="" alt="Direction image" />
-    </div>
+    <hr>
+    <h2>Entrance Directions</h2><p style="text-align: center;">Coming Soon</p>
     <hr />
     <div id="formContainer">
       <form
@@ -44,7 +52,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "786733064" -->
-        <fieldset>
+        <fieldset style="display: none;">
           <legend for="786733064">Query Type</legend>
           <div class="form-group">
             <select id="786733064" name="entry.954817908" class="form-control">
@@ -55,7 +63,7 @@
         </fieldset>
 
         <!-- Field type: "dropdown" id: "999410215" -->
-        <fieldset id="location-fieldset">
+        <fieldset id="location-fieldset" style="display: none">
           <legend for="999410215">Location</legend>
           <div class="form-group">
             <select id="999410215" name="entry.1369825634" class="form-control">
@@ -180,11 +188,18 @@
         <input type="hidden" name="fbzx" value="-3712829229282549581">
         <input type="hidden" name="pageHistory" value="0">
 
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input id="sub" class="btn btn-primary" type="submit" value="Submit">
       </form>
     </div>
-    <a href="index.html" class="btn btn-back">Back to Map</a>
+    <hr>
+    <h2 style="color: gray;">Accessibility Rating (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    <hr>
+    <h2 style="color: gray;">Comments (in the works...)</h2>
+      <h3 style="color: gray">...</h3>
+    
   </div>
+  <a href="index.html" class="btn-back">Back to Map</a>
   </main>
   <script>
     const directions = [
@@ -196,8 +211,8 @@
       const select = document.getElementById('direction-select');
       const idx = parseInt(select.value, 10);
       const direction = directions[idx] || directions[0];
-      document.getElementById('direction-text').textContent = direction.text;
-      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-text').textContent = 'Coming soon.';
+      document.getElementById('direction-image').src = 'https://via.placeholder.com/260x150?text=Coming+Soon';
       document.getElementById('direction-image').alt = direction.label;
     }
 
@@ -242,5 +257,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
+
+
+
 
 

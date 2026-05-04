@@ -1,3 +1,54 @@
+// Handle header links for info.html dropdowns
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to open a dropdown by ID
+    const openDropdown = (id) => {
+        const details = document.getElementById(id);
+        if (details && details.tagName === 'DETAILS') {
+            details.open = true;
+        }
+    };
+    
+    // Open dropdown if there's a hash in the URL
+    if (window.location.hash) {
+        const hashId = window.location.hash.substring(1);
+        openDropdown(hashId);
+    }
+    
+    // Add click handlers to header links
+    const headerLinks = document.querySelectorAll('.header-info-link');
+    headerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.includes('#')) {
+                const targetId = href.split('#')[1];
+                openDropdown(targetId);
+                e.preventDefault();
+                // Scroll after opening the dropdown
+                const details = document.getElementById(targetId);
+                if (details) {
+                    setTimeout(() => {
+                        details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50);
+                }
+            }
+        });
+    });
+});
+
+// Also handle hash changes (e.g., when navigating via back button or direct URL entry)
+window.addEventListener('hashchange', function() {
+    if (window.location.hash) {
+        const hashId = window.location.hash.substring(1);
+        const details = document.getElementById(hashId);
+        if (details && details.tagName === 'DETAILS') {
+            details.open = true;
+            setTimeout(() => {
+                details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        }
+    }
+});
+
 // Form toggle logic
 document.addEventListener('DOMContentLoaded', function() {
     const queryTypeSelect = document.getElementById('786733064');
@@ -105,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleFilterBoxBtn.style.filter = 'none';
                 setMapInteractivity(true);
                 formWrapper.classList.remove('visible');
-                setTimeout(() => formWrapper.style.display = 'none', 500);
+                setTimeout(() => formWrapper.style.display = 'none', 850);
                 toggleFormBtn.textContent = 'Comment or Suggest';
                 if (formContainer) formContainer.classList.remove('form-open');
                 document.removeEventListener('click', handleOutsideClick);
@@ -124,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Hide filters panel when showing form
                 if (mapPanel) {
                     mapPanel.classList.remove('visible');
-                    setTimeout(() => mapPanel.style.display = 'none', 500);
+                    setTimeout(() => mapPanel.style.display = 'none', 850);
                     if (toggleFilterBoxBtn) toggleFilterBoxBtn.textContent = 'Show Filters';
                 }
             } else {
@@ -132,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 toggleFilterBoxBtn.style.filter = 'none';
                 setMapInteractivity(true);
                 formWrapper.classList.remove('visible');
-                setTimeout(() => formWrapper.style.display = 'none', 500);
+                setTimeout(() => formWrapper.style.display = 'none', 850);
                 toggleFormBtn.textContent = 'Comment or Suggest';
                 if (formContainer) formContainer.classList.remove('form-open');
                 document.removeEventListener('click', handleOutsideClick);
@@ -144,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeFormBtn.addEventListener('click', function() {
                 if (formWrapper) {
                     formWrapper.classList.remove('visible');
-                    setTimeout(() => formWrapper.style.display = 'none', 500);
+                    setTimeout(() => formWrapper.style.display = 'none', 850);
                 }
                 if (toggleFormBtn) {
                     toggleFormBtn.textContent = 'Comment or Suggest';
@@ -171,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Hide form when showing filters
                 if (formWrapper) {
                     formWrapper.classList.remove('visible');
-                    setTimeout(() => formWrapper.style.display = 'none', 800);
+                    setTimeout(() => formWrapper.style.display = 'none', 850);
                     if (toggleFormBtn) toggleFormBtn.textContent = 'Comment or Suggest';
                     mapElement.style.filter = 'none';
                     toggleFilterBoxBtn.style.filter = 'none';
@@ -180,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 setMapInteractivity(true);
                 mapPanel.classList.remove('visible');
-                setTimeout(() => mapPanel.style.display = 'none', 800);
+                setTimeout(() => mapPanel.style.display = 'none', 850);
                 toggleFilterBoxBtn.textContent = 'Show Filters';
             }
         });
@@ -192,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!mapPanel.contains(event.target) && !toggleFilterBoxBtn.contains(event.target)) {
                 setMapInteractivity(true);
                 mapPanel.classList.remove('visible');
-                setTimeout(() => mapPanel.style.display = 'none', 800);
+                setTimeout(() => mapPanel.style.display = 'none', 850);
                 if (toggleFilterBoxBtn) toggleFilterBoxBtn.textContent = 'Show Filters';
             }
         }
@@ -251,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide filters panel when opening form
         if (mapPanel) {
             mapPanel.classList.remove('visible');
-            setTimeout(() => mapPanel.style.display = 'none', 800);
+            setTimeout(() => mapPanel.style.display = 'none', 850);
             if (toggleFilterBoxBtn) toggleFilterBoxBtn.textContent = 'Show Filters';
         }
 
@@ -376,94 +427,50 @@ const mall = [
     {
     name: "Santolan Town Plaza",
     coords: [14.604715, 121.033720],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
+    info: ["Online Services", "Elevator access on all floors", "Escalators", "Accesisibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "Service Animal-Friendly Establishment", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Main Entrance', text: 'Enter Santolan Town Plaza via the main street entrance; follow sidewalk signs to the lobby.', image: 'https://via.placeholder.com/260x150?text=Santolan+Main+Entrance' },
-        { label: 'Parking Lot Route', text: 'From the parking lot, walk through the pedestrian gate and take the ramp to the Santolan Town Plaza door.', image: 'https://via.placeholder.com/260x150?text=Santolan+Parking+Entrance' }
+        { label: 'Main Entrance', text: 'Coming Soon!'},
+        { label: 'Parking Lot Route', text: 'Coming Soon!'}
     ],
     id: "mall-1",
+    onlineServiceUrl: "https://www.facebook.com/SantolanTownPlaza/",
     comments: []
     },
     {
     name: "Puregold Agora",
     coords: [14.605218, 121.023248],
-    info: ["Wheelchair-accessible entrances", "Accessible/Universal Washrooms"],
+    info: ["Online Services", "Escalators", "Accessibility Parking Spaces", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Front Entrance', text: 'Use the front entrance of Puregold Agora near the Agora sign; accessible ramp available.', image: 'https://via.placeholder.com/260x150?text=Puregold+Front+Entrance' },
-        { label: 'Back Entrance', text: 'Enter Puregold Agora from the back alley; follow the marked path to the store.', image: 'https://via.placeholder.com/260x150?text=Puregold+Back+Entrance' }
+        { label: 'Front Entrance', text: 'Coming Soon!' },
+        { label: 'Back Entrance', text: 'Coming Soon!' }
     ],
     id: "mall-2",
+    onlineServiceUrl: "https://www.foodpanda.ph/shop/ybql/puregold-agora",
     comments: []
     },
     {
     name: "GH Mall",
     coords: [14.601245, 121.048031],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
+    info: ["Online Services", "Elevator access on all floors", "Escalators", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "Service Animal-Friendly Establishment", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
+        { label: 'Primary Entrance', text: 'Coming Soon!'},
+        { label: 'Service Entrance', text: 'Coming Soon!'}
     ],
     id: "mall-3",
+    onlineServiceUrl: "https://www.ortigasmalls.com/greenhills",
     comments: []
     }
     ,
     {
     name: "The Corner House",
     coords: [14.597672315528328, 121.03828288057815],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
+    info: ["Online Services", "Elevators", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "Service Animal-Friendly Establishment", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
+        { label: 'Primary Entrance', text: 'Coming Soon!'},
+        { label: 'Service Entrance', text: 'Coming Soon!'}
     ],
     id: "mall-4",
-    comments: []
-    }
-    ,
-    {
-    name: "The Marketplace",
-    coords: [14.597672315528328, 121.0376231571767],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "mall-5",
-    comments: []
-    }
-    ,
-    {
-    name: "One Roxas Square",
-    coords: [14.601291184681145, 121.02812781094224],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "mall-6",
-    comments: []
-    }
-    ,
-    {
-    name: "Music Museum",
-    coords: [14.60274918539074, 121.05130874026007],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "mall-7",
-    comments: []
-    }
-    ,
-    {
-    name: "The Promenade Greenhills",
-    coords: [14.603433699836728, 121.05160925863696],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "mall-8",
+    onlineServiceUrl: "https://www.facebook.com/thecornerhouseph/",
     comments: []
     }
     
@@ -473,45 +480,34 @@ const government = [
     {
     name: "City Hall",
     coords: [14.604858, 121.029903],
-    info: ["Accessible/Universal Washrooms", "Sign-language Trained Workers", "Online Services", "Wheelchair-accessible entrances"],
+    info: ["Online Services", "Elevators", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Main Lobby Entrance', text: 'Enter City Hall through the main lobby; security check required.', image: 'https://via.placeholder.com/260x150?text=City+Hall+Main+Lobby' },
-        { label: 'Side Entrance', text: 'Side entrance of City Hall for service counters; accessible path available.', image: 'https://via.placeholder.com/260x150?text=City+Hall+Side+Entrance' }
+        { label: 'Main Lobby Entrance', text: 'Coming Soon!'},
+        { label: 'Back Entrance', text: 'Coming Soon!'}
     ],
     id: "gov-1",
+    onlineServiceUrl: "https://www.sanjuancity.gov.ph",
     comments: []
     },
     {
     name: "National Government Center",
     coords: [14.603879, 121.031914],
-    info: ["Accessible/Universal Washrooms", "Online Services", "Wheelchair-accessible entrances", "Accessibility Parking Spaces"],
+    info: ["Online Services", "Elevators", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Front Entrance', text: 'Main front entrance of National Government Center with ramps and elevators.', image: 'https://via.placeholder.com/260x150?text=NGC+Front+Entrance' },
-        { label: 'Parking Area Access', text: 'Direct access from designated parking spaces at National Government Center.', image: 'https://via.placeholder.com/260x150?text=NGC+Parking+Access' }
+        { label: 'Front Entrance', text: 'Coming Soon!' },
+        { label: 'Parking Area Access', text: 'Coming Soon!' }
     ],
     id: "gov-2",
     comments: []
     }
     ,
     {
-    name: "Social Security System (SSS) Office",
-    coords: [14.602710823248971, 121.0269966079887],
-    info: ["Accessible/Universal Washrooms", "Online Services", "Wheelchair-accessible entrances", "Accessibility Parking Spaces"],
-    directions: [
-        { label: 'Front Entrance', text: 'Main front entrance of National Government Center with ramps and elevators.', image: 'https://via.placeholder.com/260x150?text=NGC+Front+Entrance' },
-        { label: 'Parking Area Access', text: 'Direct access from designated parking spaces at National Government Center.', image: 'https://via.placeholder.com/260x150?text=NGC+Parking+Access' }
-    ],
-    id: "gov-3",
-    comments: []
-    }
-    ,
-    {
     name: "San Juan Hall of Justice",
     coords: [14.604397672370293, 121.03217091862406],
-    info: ["Accessible/Universal Washrooms", "Online Services", "Wheelchair-accessible entrances", "Accessibility Parking Spaces"],
+    info: ["Elevators", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms", "No Flashing Lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Front Entrance', text: 'Main front entrance of National Government Center with ramps and elevators.', image: 'https://via.placeholder.com/260x150?text=NGC+Front+Entrance' },
-        { label: 'Parking Area Access', text: 'Direct access from designated parking spaces at National Government Center.', image: 'https://via.placeholder.com/260x150?text=NGC+Parking+Access' }
+        { label: 'Front Entrance', text: 'Coming Soon!' },
+        { label: 'Parking Area Access', text: 'Coming Soon!' }
     ],
     id: "gov-4",
     comments: []
@@ -520,12 +516,13 @@ const government = [
     {
     name: "Land Transportation Office (LTO) San Juan",
     coords: [14.606038628539768, 121.02316122986402],
-    info: ["Accessible/Universal Washrooms", "Online Services", "Wheelchair-accessible entrances", "Accessibility Parking Spaces"],
+    info: ["Online Services", "Accessibility Parking Spaces", "Wheelchair-accessible entrances", "No flashing lights", "Abundant Public Seating"],
     directions: [
-        { label: 'Front Entrance', text: 'Main front entrance of National Government Center with ramps and elevators.', image: 'https://via.placeholder.com/260x150?text=NGC+Front+Entrance' },
-        { label: 'Parking Area Access', text: 'Direct access from designated parking spaces at National Government Center.', image: 'https://via.placeholder.com/260x150?text=NGC+Parking+Access' }
+        { label: 'Front Entrance', text: 'Coming Soon!' },
+        { label: 'Parking Area Access', text: 'Coming Soon!' }
     ],
     id: "gov-5",
+    onlineServiceUrl: "https://portal.lto.gov.ph/ords/f?p=1200:HOME::::::",
     comments: []
     }
 ]
@@ -534,10 +531,17 @@ const parks = [
     {
     name: "Pinaglabanan Park",
     coords: [14.604730, 121.030581],
-    info: ["Wheelchair-accessible entrances", "Service Animal-Friendly Establishments", "Tactile Flooring"],
+    info: [
+        {text: "Acessibility Parking Spaces"},
+        {text: "Tactile Flooring"},
+        {text: "Wheelchair-accessible entrances", warning: "Motorcycles park and cars often block the wheelchair ramps."},
+        {text: "Service Animal-Friendly Establishment", warning: "Animals need to be wearing diapers in the park museums. Owners should be prepared to clean up after their pets."},
+        {text: "No Flashing Lights"},
+        {text: "Abundant Public Seating"}
+    ],
     directions: [
-        { label: 'North Gate', text: 'Enter Pinaglabanan Park through the North Gate at the intersection of Santolan and Concordia; follow the paved path to the central plaza.', image: 'https://via.placeholder.com/260x150?text=Pinaglabanan+North+Gate' },
-        { label: 'South Gate', text: 'Use the South Gate of Pinaglabanan Park on Felicidad; this path is more shaded and closer to the fountain area.', image: 'https://via.placeholder.com/260x150?text=Pinaglabanan+South+Gate' }
+        { label: 'Front Entrance', text: 'Coming Soon!' },
+        { label: 'Back Entrance', text: 'Coming Soon!'}
     ],
     id: "park-1",
     comments: []
@@ -545,10 +549,17 @@ const parks = [
     {
     name: "Mini Park",
     coords: [14.603928, 121.028049],
-    info: ["Wheelchair-accessible entrances", "Service Animal-Friendly Establishments"],
+    info: [
+        {text: "Tactile Flooring"},
+        {text: "Wheelchair-accessible entrances", warning: "The wheelchair ramp does not extend to the main road (there is a curb). Visitors may need assistance crossing the street to access the ramp."},
+        {text: "Service Animal-Friendly Establishment", warning: "Animals need to be wearing diapers in the park museums. Owners should be prepared to clean up after their pets."},
+        {text: "Accessible/Universal Washrooms"},
+        {text: "No Flashing Lights"},
+        {text: "Abundant Public Seating"}
+        ],
     directions: [
-        { label: 'Main Entrance', text: 'Access Mini Park from Lopez Street entrance; a short ramp leads directly into the green zone.', image: 'https://via.placeholder.com/260x150?text=Mini+Park+Main+Entrance' },
-        { label: 'Side Walkway', text: 'Enter Mini Park via the dedicated walkway beside the community center; this is the least crowded route.', image: 'https://via.placeholder.com/260x150?text=Mini+Park+Side+Walkway' }
+        { label: 'Main Entrance', text: 'Coming Soon!'},
+        { label: 'Side Walkway', text: 'Coming Soon!'}
     ],
     id: "park-2",
     comments: []
@@ -556,46 +567,28 @@ const parks = [
     {
     name: "Filoil EcoOil Centre",
     coords: [14.605566, 121.032907],
-    info: ["Wheelchair-accessible entrances", "Tactile Flooring", "Accessible/Universal Washrooms"],
+    info: ["Accessibility Parking Spaces", "Wheelchair-accessible entrances", "Accessible/Universal Washrooms"],
     directions: [
-        { label: 'Main Gate', text: 'Enter Filoil EcoOil Centre through the main gate on Katipunan Street; follow signs to visitor parking and ramp access.', image: 'https://via.placeholder.com/260x150?text=Filoil+Main+Gate' },
-        { label: 'Back Entry', text: 'The back entry of Filoil EcoOil Centre near the basketball courts has a wide path and level access to the seating area.', image: 'https://via.placeholder.com/260x150?text=Filoil+Back+Entry' }
+        { label: 'Main Gate', text: 'Coming Soon!'},
+        { label: 'Back Entry', text: 'Coming Soon!'}
     ],
     id: "park-3",
     comments: []
     }
     ,
     {
-    name: "Fundacion Sanso",
-    coords: [14.598080364280515, 121.03748137805383],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "park-4",
-    comments: []
-    }
-    ,
-    {
-    name: "Smash Bro Recreation Center",
-    coords: [14.607721057057056, 121.02979008695678],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
-    directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
-    ],
-    id: "park-5",
-    comments: []
-    }
-    ,
-    {
     name: "San Juan Plaza",
     coords: [14.605635141051149, 121.02268517063243],
-    info: ["Wheelchair-accessible entrances", "Elevator access on all floors", "Accessible/Universal Washrooms"],
+    info: [
+        {text: "Acessibility Parking Spaces"},
+        {text: "Wheelchair-accessible entrances"},
+        {text: "Service Animal-Friendly Establishment", warning: "Animals need to be wearing diapers in the park museums. Owners should be prepared to clean up after their pets."},
+        {text: "No Flashing Lights"},
+        {text: "Abundant Public Seating"}
+    ],
     directions: [
-        { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
-        { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
+        { label: 'Primary Entrance', text: 'Coming Soon!'},
+        { label: 'Service Entrance', text: 'Coming Soon!'}
     ],
     id: "park-6",
     comments: []
@@ -633,11 +626,34 @@ function createPopupContent(location) {
         if (feature.includes('Wheelchair-accessible')) return 'accessible';
         if (feature.includes('Sign-language')) return 'sign_language';
         if (feature.includes('Service Animal')) return 'pets';
+        if (feature.includes('No Flashing Lights')) return 'flash_off';
+        if (feature.includes('Abundant Public Seating')) return 'chair';
+        if (feature.includes('Adult/Baby Changing Stations')) return 'baby_changing_station';
         if (feature.includes('Washrooms')) return 'accessible'; // fallback
         return 'help'; // default
     };
 
-    const featureOptions = location.info ? location.info.map(item => `<li style="margin: 4px 0; padding: 4px; background: #f9f9f9; border-radius: 4px; display: flex; align-items: center;"><span class="material-icons" style="margin-right: 8px; font-size: 18px;">${getFeatureIcon(item)}</span>${item}</li>`).join('') : '<li>No features available</li>';
+    const featureOptions = location.info ? location.info.map(item => {
+        let text, warning;
+        if (typeof item === 'string') {
+            text = item;
+            warning = null;
+        } else {
+            text = item.text;
+            warning = item.warning;
+        }
+        let warningHtml = '';
+        if (warning) {
+            warningHtml = ` <span class="material-icons warning-icon" onclick="alert('${warning.replace(/'/g, "\\'")}')">warning</span>`;
+        }
+        
+        // Render Online Services as a clickable link if URL exists
+        if (text.includes('Online Services') && location.onlineServiceUrl) {
+            return `<li class="popup-feature-item"><span><span class="material-icons">${getFeatureIcon(text)}</span><a href="${location.onlineServiceUrl}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500; transition: color 0.3s ease;">${text}</a></span>${warningHtml}</li>`;
+        }
+        
+        return `<li class="popup-feature-item"><span><span class="material-icons">${getFeatureIcon(text)}</span>${text}</span>${warningHtml}</li>`;
+    }).join('') : '<li>No features available</li>';
     
     const directions = location.directions || [
         { label: 'Main Entrance', text: 'Enter via the main street entrance; follow sidewalk signs to the lobby.', image: 'https://via.placeholder.com/260x150?text=Entrance+Image' },
@@ -652,39 +668,40 @@ function createPopupContent(location) {
     const directionSelectId = `direction-select-${location.id}`;
 
     const commentsHTML = location.comments.map(comment => `
-        <div style="background: #f0f0f0; padding: 8px; margin: 5px 0; border-radius: 4px;">
-            <strong>${comment.author}:</strong> ${comment.text}
+        <div class="popup-comment">
+            <strong>${comment.author}:</strong>
+            ${comment.text}
         </div>
     `).join('');
     
     return `
-        <div style="min-width: 250px; max-width: 320px; font-size: 0.9rem;">
+        <div class="popup-card">
             <strong class="location-name">${location.name}</strong>
-            <hr style="margin: 8px 0; color: white;">
-            <details open ontoggle="centerPopupOnScreen()" style="margin-bottom: 8px; border: 1px solid #ddd; border-radius: 6px; padding: 6px; background: #fff;">
-                <summary style="cursor: pointer; font-weight: bold; margin-bottom: 4px;">Features</summary>
-                <div style="margin-top: 8px;">
-                    <ul style="list-style: none; padding: 0; margin: 0;">
+            <hr class="popup-divider">
+            <details open ontoggle="centerPopupOnScreen()" class="popup-section">
+                <summary>Features</summary>
+                <div class="popup-section-content">
+                    <ul class="popup-feature-list">
                         ${featureOptions}
                     </ul>
                 </div>
             </details>
-            <details ontoggle="centerPopupOnScreen()" style="margin-bottom: 8px; border: 1px solid #ddd; border-radius: 6px; padding: 6px; background: #fff;">
-                <summary style="cursor: pointer; font-weight: bold; margin-bottom: 4px;">Entrance Directions</summary>
-                <div style="margin-top: 8px;">
-                    <select id="${directionSelectId}" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;" onchange="updatePopupDirection('${location.id}', this.value)">
+            <details ontoggle="centerPopupOnScreen()" class="popup-section">
+                <summary>Entrance Directions</summary>
+                <div class="popup-section-content">
+                    <select id="${directionSelectId}" class="popup-select" onchange="updatePopupDirection('${location.id}', this.value)">
                         ${directionOptions}
                     </select>
-                    <div id="${directionContentId}" style="margin-top: 8px; border: 1px solid #ddd; padding: 8px; border-radius: 4px; background: #fafafa;">
-                        <div id="${directionTextId}" style="margin-bottom: 6px;">${defaultDirection.text}</div>
-                        <img id="${directionImageId}" src="${defaultDirection.image}" alt="Entrance direction image" style="width: 100%; height: auto; max-height: 130px; object-fit: cover; border-radius: 4px;" />
+                    <div id="${directionContentId}" class="popup-direction-box">
+                        <div id="${directionTextId}" class="popup-direction-text">${defaultDirection.text}</div>
+                        <img id="${directionImageId}" src="${defaultDirection.image}" alt="Entrance direction image" class="popup-direction-image" />
                     </div>
                 </div>
             </details>
-            <hr style="margin: 8px 0;">
+            <hr class="popup-divider">
             ${commentsHTML}
-            <button onclick="openCommentForm('${location.name}')" style="width: 100%; padding: 8px; background: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 8px;">Comment or Suggest</button>
-            <button onclick="openFullDetails('${location.id}')" style="width: 100%; padding: 8px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">View Full Details</button>
+            <button onclick="openCommentForm('${location.name}')" class="popup-action-btn popup-action-btn-primary">Comment or Suggest</button>
+            <button onclick="openFullDetails('${location.id}')" class="popup-action-btn popup-action-btn-secondary">View Full Details</button>
         </div>
     `;
 }
@@ -709,8 +726,9 @@ window.updatePopupDirection = function(locationId, directionIdx) {
 };
 
 window.openFullDetails = function(locationId) {
-    // Use per-location HTML page. Name convention: <locationId>.html (e.g., park-1.html)
-    const targetPage = `${locationId}.html`;
+    const location = window.getLocationById(locationId);
+    const slug = location.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const targetPage = `${slug}.html`;
     window.open(targetPage, '_blank');
 };
 
@@ -754,17 +772,19 @@ var mallLayer = new L.FeatureGroup();
 var governmentLayer = new L.FeatureGroup();
 var parkLayer = new L.FeatureGroup();
 
+const mapLabelOptions = {
+    permanent: true,
+    direction: 'right',
+    offset: [16, 0],
+    className: 'map-label',
+    interactive: true
+};
+
 mall.forEach(malls => {
     const mallIconPlacer = L.marker(malls.coords, {icon: mallIcon});
     malls.marker = mallIconPlacer;
     mallIconPlacer.bindPopup(createPopupContent(malls));
-    mallIconPlacer.bindTooltip(malls.name, {
-        permanent: true,
-        direction: 'right',
-        offset: [12, 0],
-        className: 'map-label',
-        interactive: true
-    }).on('tooltipopen', function(e) {
+    mallIconPlacer.bindTooltip(malls.name, mapLabelOptions).on('tooltipopen', function(e) {
         const tooltip = e.tooltip;
         tooltip.getElement().addEventListener('click', function() {
             mallIconPlacer.openPopup();
@@ -779,13 +799,7 @@ government.forEach(gov => {
     const governmentIconPlacer = L.marker(gov.coords, {icon: governmentIcon});
     gov.marker = governmentIconPlacer;
     governmentIconPlacer.bindPopup(createPopupContent(gov));
-    governmentIconPlacer.bindTooltip(gov.name, {
-        permanent: true,
-        direction: 'right',
-        offset: [12, 0],
-        className: 'map-label',
-        interactive: true
-    }).on('tooltipopen', function(e) {
+    governmentIconPlacer.bindTooltip(gov.name, mapLabelOptions).on('tooltipopen', function(e) {
         const tooltip = e.tooltip;
         tooltip.getElement().addEventListener('click', function() {
             governmentIconPlacer.openPopup();
@@ -800,13 +814,7 @@ parks.forEach(park => {
     const parkIconPlacer = L.marker(park.coords, {icon: parkIcon});
     park.marker = parkIconPlacer;
     parkIconPlacer.bindPopup(createPopupContent(park));
-    parkIconPlacer.bindTooltip(park.name, {
-        permanent: true,
-        direction: 'right',
-        offset: [12, 0],
-        className: 'map-label',
-        interactive: true
-    }).on('tooltipopen', function(e) {
+    parkIconPlacer.bindTooltip(park.name, mapLabelOptions).on('tooltipopen', function(e) {
         const tooltip = e.tooltip;
         tooltip.getElement().addEventListener('click', function() {
             parkIconPlacer.openPopup();
@@ -840,18 +848,56 @@ function getLabelToggleState(){
     return el ? el.checked : true;
 }
 
+function normalizeFeature(feature) {
+    const lower = feature.toLowerCase();
+    if (lower.includes('elevator')) return 'elevator';
+    if (lower.includes('escalator')) return 'escalator';
+    if (lower.includes('online')) return 'online';
+    if (lower.includes('parking')) return 'parking';
+    if (lower.includes('tactile')) return 'tactile';
+    if (lower.includes('wheelchair')) return 'wheelchair';
+    if (lower.includes('washroom')) return 'washroom';
+    if (lower.includes('sign-language')) return 'sign-language';
+    if (lower.includes('service animal')) return 'service animal';
+    if (lower.includes('no flashing')) return 'no flashing';
+    if (lower.includes('abundant')) return 'abundant';
+    return lower;
+}
+
 function locationHasFeatures(location, selectedFeatures){
     if (!selectedFeatures.length) return true;
     if (!location.info || !Array.isArray(location.info) || !location.info.length) return false;
-    const infoLower = location.info.map(i => i.toLowerCase());
+    const infoLower = location.info.map(i => typeof i === 'string' ? i.toLowerCase() : i.text.toLowerCase());
+
+    const normalizedSelected = selectedFeatures.map(normalizeFeature);
+    const normalizedInfo = infoLower.map(normalizeFeature);
 
     // Match ALL selected features (logical AND)
-    return selectedFeatures.every(feature => infoLower.some(item => item === feature || item.includes(feature)));
+    return normalizedSelected.every(feature => normalizedInfo.includes(feature));
 }
 
 function setLabelVisibility(marker, visible){
     if (!marker || !marker._tooltip || !marker._tooltip._container) return;
-    marker._tooltip._container.style.display = visible ? '' : 'none';
+    const container = marker._tooltip._container;
+    container.style.display = visible ? '' : 'none';
+    if (!visible) {
+        container.style.marginTop = '';
+    }
+}
+
+function resetLabelShift(marker) {
+    if (!marker || !marker._tooltip || !marker._tooltip._container) return;
+    marker._tooltip._container.style.marginTop = '';
+}
+
+function positionLabelsWithoutOverlap(markers) {
+    if (!map || !markers.length) return;
+
+    markers.forEach(marker => {
+        const tooltip = marker._tooltip;
+        if (!tooltip || !tooltip._container) return;
+        tooltip._container.style.marginTop = '';
+    });
 }
 
 function setMarkerVisibility(marker, visible){
@@ -882,10 +928,11 @@ function avoidLabelOverlap(){
 
     const currentZoom = map.getZoom();
     
-    // At maximum zoom (18+), show all labels without collision detection
-    if (currentZoom >= 18) {
+    // At high zoom (17+), keep all labels visible and keep labels anchored to their markers
+    if (currentZoom >= 17) {
         visibleMarkers.forEach(marker => {
             setLabelVisibility(marker, true);
+            resetLabelShift(marker);
         });
         return;
     }
@@ -950,6 +997,10 @@ function updateMarkersByFilters(){
 
         setMarkerVisibility(location.marker, visible);
     });
+
+    if (map && map.getZoom && map.getZoom() > 14) {
+        avoidLabelOverlap();
+    }
 }
 
 function hideLayer(layer){
@@ -1009,6 +1060,8 @@ map.on('zoomend', function(){
     }
     updateZoomOverlay();
 });
+
+map.on('zoom', updateZoomOverlay);
 
 // Initialize overlay state after map creation
 updateZoomOverlay();
@@ -1206,3 +1259,11 @@ $('#bootstrapForm').submit(function (event) {
         }
     })
 })*/
+
+// Preloader hide on window load
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.display = 'none';
+    }
+});

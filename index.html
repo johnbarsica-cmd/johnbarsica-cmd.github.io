@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Webapp</title>
+    <link rel="icon" href="logos/logo3.png">
+    <title>Project SINAG</title>
 
 
     <!--LINK TO OSM-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    <!-- Material Icons -->
+    <!-- Material Ico ns -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--LINK TO CSS and JS-->
@@ -29,15 +30,28 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
     <header>
         <a href="index.html">
             <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
         </a>
         <a class="header-info-link" href="info.html">Info</a>
+        <div class="header-links">
+            <a class="header-info-link" href="info.html#isa">Accessibility</a>
+            <a class="header-info-link" href="info.html#laws">Laws</a>
+            <a class="header-info-link" href="info.html#agencies">Agencies</a>
+            <a class="header-info-link" href="info.html#w3c">W3C</a>
+            <a class="header-info-link" href="info.html#future">Future</a>
+        </div>
 
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Search for a location..." autocomplete="off">
-            <button id="searchBtn">Search</button>
+            <button id="searchBtn"><span class="material-icons">search</span></button>
             <div class="result-box">
                 <ul id="resultList"></ul>
             </div>
@@ -46,17 +60,19 @@
     <main>
 
         
-        <div class="hey">
-            <a href="info.html"><span class="material-icons" style="font-size: larger;   background-color: white;
-border-radius: 50%;">info</span></a>
+        <div class="infoButton">
+            <a href="info.html"><span class="material-icons" style="font-size: larger;   background-color: white; border-radius: 50%;">info</span></a>
         </div>
 
         <div id="map"></div>
         <div id="zoomOverlay">Zoom in</div>
         <div id="mapBlocker"></div>
 
-        <div id="formContainer" style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
-            <button id="toggleFormBtn" type="button" class="btn btn-secondary">Comment or Suggest</button>
+        <div id="formContainer" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+            <div id="formButtons">
+                <button id="toggleFormBtn" type="button" class="btn btn-secondary">Comment or Suggest</button>
+                <button id="toggleFilterBoxBtn" type="button" class="btn btn-secondary">Hide Filters</button>
+            </div>
             <div id="formWrapper" style="display: none;">
                 <button id="closeFormBtn" type="button" aria-label="Close form">×</button>
                 <form
@@ -90,11 +106,16 @@ border-radius: 50%;">info</span></a>
                                 <option value="Santolan Town Plaza">Santolan Town Plaza</option>
                                 <option value="Puregold Agora">Puregold Agora</option>
                                 <option value="GH Mall">GH Mall</option>
+                                <option value="The Corner House">The Corner House</option>
+                                <option value="The Marketplace">The Marketplace</option>
                                 <option value="City Hall">City Hall</option>
                                 <option value="National Government Center">National Government Center</option>
+                                <option value="San Juan Hall of Justice">San Juan Hall of Justice</option>
+                                <option value="Land Transportation Office (LTO) San Juan">Land Transportation Office (LTO) San Juan</option>
                                 <option value="Pinaglabanan Park">Pinaglabanan Park</option>
                                 <option value="Mini Park">Mini Park</option>
                                 <option value="Filoil EcoOil Centre">Filoil EcoOil Centre</option>
+                                <option value="San Juan Plaza">San Juan Plaza</option>
                             </select>
                         </div>
                     </fieldset>
@@ -222,7 +243,6 @@ border-radius: 50%;">info</span></a>
             </form>
         </div>
         </div>
-        <button id="toggleFilterBoxBtn" type="button" class="btn btn-secondary">Hide Filters</button>
 
         <div id="mapPanel">
             <hr style="margin: 8px 0;">
@@ -233,8 +253,8 @@ border-radius: 50%;">info</span></a>
             <label for=""><input type="checkbox" id="filterParks" checked onchange="toggleLayer(parkLayer, this)"><span class="mapCheckbox"></span> Parks</label>
             
             <hr style="margin: 8px 0;">
-            <div id="featureFilters">
-                <strong>Feature Filters</strong>
+            <div id="featureFilters" class="feature-filters">
+                <strong>Feature Filters</strong> <small class="scroll-hint" style="display: none; margin-left: 8px; color: #666; font-size: 12px;">Scroll down for more features</small>
                 <label><input type="checkbox" class="feature-filter" value="Online Services"> Online Services</label>
                 <label><input type="checkbox" class="feature-filter" value="Elevators"> Elevators</label>
                 <label><input type="checkbox" class="feature-filter" value="Escalators"> Escalators</label>
@@ -244,6 +264,8 @@ border-radius: 50%;">info</span></a>
                 <label><input type="checkbox" class="feature-filter" value="Accessible/Universal Washrooms"> Accessible/Universal Washrooms</label>
                 <label><input type="checkbox" class="feature-filter" value="Sign-language Trained Workers"> Sign-language Trained Workers</label>
                 <label><input type="checkbox" class="feature-filter" value="Service Animal-Friendly Establishments"> Service Animal-Friendly Establishments</label>
+                <label><input type="checkbox" class="feature-filter" value="No Flashing Lights"> No Flashing Lights</label>
+                <label><input type="checkbox" class="feature-filter" value="Abundant Public Seating"> Abundant Public Seating</label>
             </div>
         </div>
     <script src="script.js"></script>

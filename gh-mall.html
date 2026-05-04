@@ -1,42 +1,51 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="location-details.css" />
-  <title>Santolan Town Plaza - Full Details</title>
+  <script src="script.js"></script>
+  <link rel="icon" href="logos/logo3.png">
+  <title>GH Mall - Full Details</title>
 </head>
 <body>
   <header>
-        <a>
-            <img src="logos/logo2.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-        </a>
-    </header>
+    <a href="index.html">
+        <img src="logos/logo3.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+    </a>
+    <a class="header-info-link" href="info.html">Info</a>
+    <div class="header-links">
+        <a class="header-info-link" href="info.html#isa">Accessibility</a>
+        <a class="header-info-link" href="info.html#laws">Laws</a>
+        <a class="header-info-link" href="info.html#agencies">Agencies</a>
+        <a class="header-info-link" href="info.html#w3c">W3C</a>
+        <a class="header-info-link" href="info.html#future">Future</a>
+    </div>
+</header>
   <main>
   <div class="card">
-    <img src="places/santolan.jpg" alt="Santolan Town Plaza" class="location-image"/>
-    <h1>Santolan Town Plaza</h1>
+    <img src="places/ghmall.jpg" alt="GH Mall" class="location-image"/>
+    <p class="image-reference"><strong>Source:</strong> <a href="https://www.ortigasmalls.com/greenhills" target="_blank">Ortigas Malls</a></p>
+    <h1>GH Mall</h1>
     <hr>
-    <p><strong>Address:</strong> 123 Main St, Santolan City</p>
-    <p><strong>Category:</strong> Mall</p>
+    <p class="location-meta"><strong>Address:</strong> Greenhills Comml Complex, Ortigas Ave, San Juan City, Metro Manila</p>
+    <p class="location-meta"><strong>Category:</strong> Mall</p>
     <hr>
     <h2>Features</h2>
     <ul>
-      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">online_prediction</span><a href="https://www.ortigasmalls.com/greenhills" target="_blank">Online Services</a></li>
       <li><span class="material-icons feature-icon">elevator</span>Elevator access on all floors</li>
-      <li><span class="material-icons feature-icon">accessible</span>Accessible/Universal Washrooms</li>
+      <li><span class="material-icons feature-icon">escalator</span>Escalators</li>
+      <li><span class="material-icons feature-icon">local_parking</span>Accessibility Parking Spaces</li>
+      <li><span class="material-icons feature-icon">accessible</span>Wheelchair-accessible entrances</li>
+      <li><span class="material-icons feature-icon">wc</span>Accessible/Universal Washrooms</li>
+      <li><span class="material-icons feature-icon">pets</span>Service-Animal-Friendly Establishment</li>
+      <li><span class="material-icons feature-icon">flash_off</span>No Flashing Lights</li>
+      <li><span class="material-icons feature-icon">chair</span>Abundant Public Seating</li>
     </ul>
     <hr>
-    <h2>Entrance Directions</h2>
-    <select id="direction-select" onchange="renderDirection()">
-      <option value="0">Main Entrance</option>
-      <option value="1">Parking Lot Route</option>
-    </select>
-    <div id="direction-detail" >
-      <p id="direction-text"></p>
-      <img id="direction-image" src="" alt="Direction image" />
-    </div>
+    <h2>Entrance Directions</h2><p style="text-align: center;">Coming Soon</p>
     <hr />
     <div id="formContainer">
       <form
@@ -65,9 +74,9 @@
           <div class="form-group">
             <select id="999410215" name="entry.1369825634" class="form-control">
               <option value=""></option>
-              <option value="Santolan Town Plaza" selected>Santolan Town Plaza</option>
+              <option value="Santolan Town Plaza">Santolan Town Plaza</option>
               <option value="Puregold Agora">Puregold Agora</option>
-              <option value="GH Mall">GH Mall</option>
+              <option value="GH Mall" selected>GH Mall</option>
               <option value="City Hall">City Hall</option>
               <option value="National Government Center">National Government Center</option>
               <option value="Pinaglabanan Park">Pinaglabanan Park</option>
@@ -194,21 +203,22 @@
     <hr>
     <h2 style="color: gray;">Comments (in the works...)</h2>
       <h3 style="color: gray">...</h3>
-    <a href="index.html" id="btm" class="btn btn-back">Back to Map</a>
+    
   </div>
+  <a href="index.html" class="btn-back">Back to Map</a>
   </main>
   <script>
     const directions = [
-      { label: 'Main Entrance', text: 'Enter Santolan Town Plaza via the main street entrance; follow sidewalk signs to the lobby.', image: 'https://via.placeholder.com/260x150?text=Santolan+Main+Entrance' },
-      { label: 'Parking Lot Route', text: 'From the parking lot, walk through the pedestrian gate and take the ramp to the Santolan Town Plaza door.', image: 'https://via.placeholder.com/260x150?text=Santolan+Parking+Entrance' }
+      { label: 'Primary Entrance', text: 'Main entrance of GH Mall on the east side; elevator and ramps provided.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Primary+Entrance' },
+      { label: 'Service Entrance', text: 'Service entrance of GH Mall for deliveries; not recommended for customers.', image: 'https://via.placeholder.com/260x150?text=GH+Mall+Service+Entrance' }
     ];
 
     function renderDirection() {
       const select = document.getElementById('direction-select');
       const idx = parseInt(select.value, 10);
       const direction = directions[idx] || directions[0];
-      document.getElementById('direction-text').textContent = direction.text;
-      document.getElementById('direction-image').src = direction.image;
+      document.getElementById('direction-text').textContent = 'Coming soon.';
+      document.getElementById('direction-image').src = 'https://via.placeholder.com/260x150?text=Coming+Soon';
       document.getElementById('direction-image').alt = direction.label;
     }
 
@@ -253,5 +263,9 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
+
+
+
 
 
